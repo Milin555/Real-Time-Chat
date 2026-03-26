@@ -20,6 +20,9 @@ const tokenA = import.meta.env.VITE_ZEGO_TOKEN_A;
 const tokenB = import.meta.env.VITE_ZEGO_TOKEN_B;
 const messageEndRef = useRef(null);
 
+console.log("App initializing. Selected user:", selectedUser);
+console.log("Is logged in:", isLoggedIn);
+
 
 useEffect(() => {
   selectedUserRef.current = selectedUser;
@@ -63,6 +66,7 @@ return () =>{
 },[])
 
 useEffect(() => {
+  console.log("Total messages:", messages.length);
   if (messageEndRef.current) {
     messageEndRef.current.scrollIntoView({ behavior: "smooth" });
   }
@@ -71,6 +75,7 @@ useEffect(() => {
 
 const handleLogin = () => {
   if (!zimInstance) return;
+  console.log("Attempting login for:", selectedUser);
 
   const info = {
     userID: selectedUser,
